@@ -48,6 +48,18 @@ def load_historical_data():
                         date_str = row["Date"]
                         match_date = datetime.strptime(date_str, "%d/%m/%Y")
                         home, away = row["HomeTeam"], row["AwayTeam"]
+                        NAME_MAPPING = {
+                            "Man United": "Manchester United",
+                            "Man City": "Manchester City",
+                            "Tottenham": "Tottenham Hotspur",
+                            "Newcastle": "Newcastle United",
+                            "Nott'm Forest": "Nottingham Forest",
+                            "Ipswich": "Ipswich Town",
+                            "Leeds": "Leeds United"
+                        }
+                        home = NAME_MAPPING.get(home, home)
+                        away = NAME_MAPPING.get(away, away)
+                        
                         hg, ag = int(row["FTHG"]), int(row["FTAG"])
                         
                         days_ago = max(0, (CURRENT_DATE - match_date).days)
@@ -169,8 +181,8 @@ MW6_FIXTURES = [
 
 def predecir_partido(home, away):
     # 1. Extraer parámetros estructurales
-    a_h, b_h = params_calibrados.get(home, {'alpha': 1, 'beta': 1}).values()
-    a_a, b_a = params_calibrados.get(away, {'alpha': 1, 'beta': 1}).values()
+    a_h, b_h = params_calibrados.get(home, {'alpha': 0.0, 'beta': 0.0}).values()
+    a_a, b_a = params_calibrados.get(away, {'alpha': 0.0, 'beta': 0.0}).values()
     
     lam = np.exp(a_h + b_a + GAMMA)
     mu = np.exp(a_a + b_h)
@@ -226,8 +238,8 @@ def generar_markdown():
     resultados = []
     
     for home, away in MW6_FIXTURES:
-        if home not in equipos_unicos or away not in equipos_unicos:
-            continue
+        if home not in equipos_unicos: equipos_unicos.append(home)
+        if away not in equipos_unicos: equipos_unicos.append(away)
         res = predecir_partido(home, away)
         p = res["1x2"]
         lineas.append(f"| {home} vs {away} | {p['1']:.1f} | {p['X']:.1f} | {p['2']:.1f} | **{res['score']}** ({res['score_prob']:.1f}%) | {res['lambda']:.2f} | {res['mu']:.2f} |")
