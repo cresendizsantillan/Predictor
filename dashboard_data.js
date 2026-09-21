@@ -11,376 +11,376 @@ const dashboardData = {
     },
     "team_metrics": {
         "Arsenal": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 1.88,
+            "ga_per90": 0.68,
+            "xg_per90": 7.57,
+            "xga_per90": 0.13,
+            "ppg": 2.32,
+            "win_rate": 71.4,
+            "draw_rate": 17.3,
+            "loss_rate": 11.2,
+            "xg_diff": 7.44,
+            "total_matches": 194
         },
         "Aston Villa": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 1.35,
+            "ga_per90": 1.42,
+            "xg_per90": 6.02,
+            "xga_per90": 0.25,
+            "ppg": 1.46,
+            "win_rate": 41.6,
+            "draw_rate": 21.7,
+            "loss_rate": 36.7,
+            "xg_diff": 5.76,
+            "total_matches": 194
         },
         "Bournemouth": {
             "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "ga_per90": 1.39,
+            "xg_per90": 6.52,
+            "xga_per90": 0.25,
+            "ppg": 1.39,
+            "win_rate": 29.7,
+            "draw_rate": 49.7,
+            "loss_rate": 20.6,
+            "xg_diff": 6.27,
+            "total_matches": 156
         },
         "Brentford": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 1.52,
+            "ga_per90": 1.32,
+            "xg_per90": 6.5,
+            "xga_per90": 0.24,
+            "ppg": 1.39,
+            "win_rate": 33.4,
+            "draw_rate": 39.2,
+            "loss_rate": 27.4,
+            "xg_diff": 6.26,
+            "total_matches": 194
         },
         "Brighton": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 1.73,
+            "ga_per90": 1.28,
+            "xg_per90": 7.17,
+            "xga_per90": 0.24,
+            "ppg": 1.49,
+            "win_rate": 40.7,
+            "draw_rate": 26.8,
+            "loss_rate": 32.5,
+            "xg_diff": 6.93,
+            "total_matches": 194
         },
         "Burnley": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 0.97,
+            "ga_per90": 1.97,
+            "xg_per90": 4.29,
+            "xga_per90": 0.35,
+            "ppg": 0.55,
+            "win_rate": 8.5,
+            "draw_rate": 28.9,
+            "loss_rate": 62.5,
+            "xg_diff": 3.94,
+            "total_matches": 114
         },
         "Chelsea": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 1.64,
+            "ga_per90": 1.54,
+            "xg_per90": 7.37,
+            "xga_per90": 0.28,
+            "ppg": 1.44,
+            "win_rate": 39.8,
+            "draw_rate": 24.5,
+            "loss_rate": 35.6,
+            "xg_diff": 7.09,
+            "total_matches": 194
         },
         "Coventry": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 0.0,
+            "ga_per90": 2.52,
+            "xg_per90": 0.0,
+            "xga_per90": 0.39,
+            "ppg": 0.0,
+            "win_rate": 0.0,
+            "draw_rate": 0.0,
+            "loss_rate": 100.0,
+            "xg_diff": -0.39,
+            "total_matches": 4
         },
         "Crystal Palace": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 1.22,
+            "ga_per90": 1.65,
+            "xg_per90": 5.19,
+            "xga_per90": 0.3,
+            "ppg": 1.12,
+            "win_rate": 28.2,
+            "draw_rate": 27.0,
+            "loss_rate": 44.8,
+            "xg_diff": 4.89,
+            "total_matches": 194
         },
         "Everton": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 1.24,
+            "ga_per90": 1.25,
+            "xg_per90": 5.21,
+            "xga_per90": 0.22,
+            "ppg": 1.28,
+            "win_rate": 30.2,
+            "draw_rate": 37.0,
+            "loss_rate": 32.8,
+            "xg_diff": 4.98,
+            "total_matches": 194
         },
         "Fulham": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 1.2,
+            "ga_per90": 1.4,
+            "xg_per90": 5.08,
+            "xga_per90": 0.25,
+            "ppg": 1.19,
+            "win_rate": 33.0,
+            "draw_rate": 20.3,
+            "loss_rate": 46.7,
+            "xg_diff": 4.83,
+            "total_matches": 156
         },
         "Hull": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 1.25,
+            "ga_per90": 0.52,
+            "xg_per90": 4.65,
+            "xga_per90": 0.11,
+            "ppg": 1.97,
+            "win_rate": 48.7,
+            "draw_rate": 51.3,
+            "loss_rate": 0.0,
+            "xg_diff": 4.54,
+            "total_matches": 4
         },
         "Ipswich Town": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 1.35,
+            "ga_per90": 2.36,
+            "xg_per90": 5.69,
+            "xga_per90": 0.43,
+            "ppg": 1.03,
+            "win_rate": 30.3,
+            "draw_rate": 11.6,
+            "loss_rate": 58.1,
+            "xg_diff": 5.27,
+            "total_matches": 42
         },
         "Leeds United": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 1.4,
+            "ga_per90": 1.27,
+            "xg_per90": 6.0,
+            "xga_per90": 0.23,
+            "ppg": 1.44,
+            "win_rate": 34.3,
+            "draw_rate": 40.5,
+            "loss_rate": 25.1,
+            "xg_diff": 5.78,
+            "total_matches": 118
         },
         "Leicester": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 0.85,
+            "ga_per90": 2.04,
+            "xg_per90": 3.44,
+            "xga_per90": 0.37,
+            "ppg": 0.68,
+            "win_rate": 17.2,
+            "draw_rate": 16.9,
+            "loss_rate": 65.9,
+            "xg_diff": 3.08,
+            "total_matches": 114
         },
         "Liverpool": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 1.75,
+            "ga_per90": 1.29,
+            "xg_per90": 7.24,
+            "xga_per90": 0.24,
+            "ppg": 1.64,
+            "win_rate": 43.4,
+            "draw_rate": 33.9,
+            "loss_rate": 22.7,
+            "xg_diff": 7.0,
+            "total_matches": 194
         },
         "Luton": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
+            "gf_per90": 1.41,
+            "ga_per90": 2.34,
+            "xg_per90": 5.79,
+            "xga_per90": 0.42,
+            "ppg": 0.66,
+            "win_rate": 14.9,
+            "draw_rate": 21.2,
+            "loss_rate": 64.0,
+            "xg_diff": 5.36,
             "total_matches": 38
         },
         "Manchester City": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 2.01,
+            "ga_per90": 0.87,
+            "xg_per90": 8.16,
+            "xga_per90": 0.17,
+            "ppg": 2.2,
+            "win_rate": 66.5,
+            "draw_rate": 20.9,
+            "loss_rate": 12.6,
+            "xg_diff": 7.99,
+            "total_matches": 194
         },
         "Manchester United": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 1.71,
+            "ga_per90": 1.37,
+            "xg_per90": 7.35,
+            "xga_per90": 0.25,
+            "ppg": 1.65,
+            "win_rate": 46.1,
+            "draw_rate": 26.3,
+            "loss_rate": 27.6,
+            "xg_diff": 7.1,
+            "total_matches": 194
         },
         "Newcastle United": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 1.57,
+            "ga_per90": 1.54,
+            "xg_per90": 6.73,
+            "xga_per90": 0.28,
+            "ppg": 1.35,
+            "win_rate": 38.1,
+            "draw_rate": 21.1,
+            "loss_rate": 40.8,
+            "xg_diff": 6.45,
+            "total_matches": 194
         },
         "Norwich": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
+            "gf_per90": 0.62,
+            "ga_per90": 2.25,
+            "xg_per90": 2.44,
+            "xga_per90": 0.43,
+            "ppg": 0.57,
+            "win_rate": 12.8,
+            "draw_rate": 18.2,
+            "loss_rate": 68.9,
+            "xg_diff": 2.01,
             "total_matches": 38
         },
         "Nottingham Forest": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 1.35,
+            "ga_per90": 1.25,
+            "xg_per90": 5.72,
+            "xga_per90": 0.22,
+            "ppg": 1.29,
+            "win_rate": 32.2,
+            "draw_rate": 32.5,
+            "loss_rate": 35.3,
+            "xg_diff": 5.5,
+            "total_matches": 156
         },
         "Sheffield United": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
+            "gf_per90": 0.95,
+            "ga_per90": 2.81,
+            "xg_per90": 3.91,
+            "xga_per90": 0.5,
+            "ppg": 0.4,
+            "win_rate": 7.1,
+            "draw_rate": 18.8,
+            "loss_rate": 74.1,
+            "xg_diff": 3.41,
             "total_matches": 38
         },
         "Southampton": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 0.7,
+            "ga_per90": 2.23,
+            "xg_per90": 2.92,
+            "xga_per90": 0.4,
+            "ppg": 0.34,
+            "win_rate": 5.4,
+            "draw_rate": 17.7,
+            "loss_rate": 76.9,
+            "xg_diff": 2.51,
+            "total_matches": 114
         },
         "Sunderland": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 1.05,
+            "ga_per90": 1.32,
+            "xg_per90": 4.51,
+            "xga_per90": 0.23,
+            "ppg": 1.33,
+            "win_rate": 34.6,
+            "draw_rate": 29.4,
+            "loss_rate": 36.1,
+            "xg_diff": 4.28,
+            "total_matches": 42
         },
         "Tottenham Hotspur": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 1.09,
+            "ga_per90": 1.54,
+            "xg_per90": 4.68,
+            "xga_per90": 0.28,
+            "ppg": 0.96,
+            "win_rate": 22.3,
+            "draw_rate": 29.5,
+            "loss_rate": 48.3,
+            "xg_diff": 4.41,
+            "total_matches": 194
         },
         "Watford": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
+            "gf_per90": 0.82,
+            "ga_per90": 2.09,
+            "xg_per90": 3.21,
+            "xga_per90": 0.4,
+            "ppg": 0.53,
+            "win_rate": 13.0,
+            "draw_rate": 14.0,
+            "loss_rate": 73.0,
+            "xg_diff": 2.82,
             "total_matches": 38
         },
         "West Ham": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 1.25,
+            "ga_per90": 1.62,
+            "xg_per90": 5.37,
+            "xga_per90": 0.29,
+            "ppg": 1.11,
+            "win_rate": 29.0,
+            "draw_rate": 24.5,
+            "loss_rate": 46.6,
+            "xg_diff": 5.08,
+            "total_matches": 190
         },
         "Wolves": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
-            "xg_diff": 0.0,
-            "total_matches": 38
+            "gf_per90": 0.88,
+            "ga_per90": 1.72,
+            "xg_per90": 3.75,
+            "xga_per90": 0.31,
+            "ppg": 0.75,
+            "win_rate": 15.3,
+            "draw_rate": 28.7,
+            "loss_rate": 56.0,
+            "xg_diff": 3.44,
+            "total_matches": 190
         },
         "Hull City": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
+            "gf_per90": 0,
+            "ga_per90": 0,
+            "xg_per90": 1.0,
+            "xga_per90": 1.0,
+            "ppg": 0.0,
+            "win_rate": 0.0,
+            "draw_rate": 0.0,
+            "loss_rate": 0.0,
             "xg_diff": 0.0,
-            "total_matches": 38
+            "total_matches": 0
         },
         "Coventry City": {
-            "gf_per90": 1.5,
-            "ga_per90": 1.5,
-            "xg_per90": 1.5,
-            "xga_per90": 1.5,
-            "ppg": 1.5,
-            "win_rate": 33.3,
-            "draw_rate": 33.3,
-            "loss_rate": 33.4,
+            "gf_per90": 0,
+            "ga_per90": 0,
+            "xg_per90": 1.0,
+            "xga_per90": 1.0,
+            "ppg": 0.0,
+            "win_rate": 0.0,
+            "draw_rate": 0.0,
+            "loss_rate": 0.0,
             "xg_diff": 0.0,
-            "total_matches": 38
+            "total_matches": 0
         }
     },
     "matches": [
@@ -478,16 +478,16 @@ const dashboardData = {
                 "away": 0.6636112513459489
             },
             "home_metrics": {
-                "xg": 1.7121814884522946,
-                "xga": 0.6636112513459489,
-                "ppg": 1.5,
-                "win_rate": 50.0
+                "xg": 7.57,
+                "xga": 0.13,
+                "ppg": 2.32,
+                "win_rate": 71.4
             },
             "away_metrics": {
-                "xg": 0.6636112513459489,
-                "xga": 1.7121814884522946,
-                "ppg": 1.5,
-                "win_rate": 50.0
+                "xg": 6.0,
+                "xga": 0.23,
+                "ppg": 1.44,
+                "win_rate": 34.3
             }
         },
         {
@@ -584,16 +584,16 @@ const dashboardData = {
                 "away": 1.4000484219070093
             },
             "home_metrics": {
-                "xg": 1.4594262443940886,
-                "xga": 1.4000484219070093,
-                "ppg": 1.5,
-                "win_rate": 50.0
+                "xg": 6.02,
+                "xga": 0.25,
+                "ppg": 1.46,
+                "win_rate": 41.6
             },
             "away_metrics": {
-                "xg": 1.4000484219070093,
-                "xga": 1.4594262443940886,
-                "ppg": 1.5,
-                "win_rate": 50.0
+                "xg": 6.5,
+                "xga": 0.24,
+                "ppg": 1.39,
+                "win_rate": 33.4
             }
         },
         {
@@ -690,16 +690,16 @@ const dashboardData = {
                 "away": 1.5415358833882702
             },
             "home_metrics": {
-                "xg": 1.8187019170670513,
-                "xga": 1.5415358833882702,
-                "ppg": 1.5,
-                "win_rate": 50.0
+                "xg": 7.37,
+                "xga": 0.28,
+                "ppg": 1.44,
+                "win_rate": 39.8
             },
             "away_metrics": {
-                "xg": 1.5415358833882702,
-                "xga": 1.8187019170670513,
-                "ppg": 1.5,
-                "win_rate": 50.0
+                "xg": 6.52,
+                "xga": 0.25,
+                "ppg": 1.39,
+                "win_rate": 29.7
             }
         },
         {
@@ -796,16 +796,16 @@ const dashboardData = {
                 "away": 1.8335656843334107
             },
             "home_metrics": {
-                "xg": 1.4296131464300659,
-                "xga": 1.8335656843334107,
-                "ppg": 1.5,
-                "win_rate": 50.0
+                "xg": 5.69,
+                "xga": 0.43,
+                "ppg": 1.03,
+                "win_rate": 30.3
             },
             "away_metrics": {
-                "xg": 1.8335656843334107,
-                "xga": 1.4296131464300659,
-                "ppg": 1.5,
-                "win_rate": 50.0
+                "xg": 5.08,
+                "xga": 0.25,
+                "ppg": 1.19,
+                "win_rate": 33.0
             }
         },
         {
@@ -902,16 +902,16 @@ const dashboardData = {
                 "away": 1.4155557733834692
             },
             "home_metrics": {
-                "xg": 1.092997522778079,
-                "xga": 1.4155557733834692,
-                "ppg": 1.5,
-                "win_rate": 50.0
+                "xg": 4.51,
+                "xga": 0.23,
+                "ppg": 1.33,
+                "win_rate": 34.6
             },
             "away_metrics": {
-                "xg": 1.4155557733834692,
-                "xga": 1.092997522778079,
-                "ppg": 1.5,
-                "win_rate": 50.0
+                "xg": 7.17,
+                "xga": 0.24,
+                "ppg": 1.49,
+                "win_rate": 40.7
             }
         },
         {
@@ -1008,16 +1008,16 @@ const dashboardData = {
                 "away": 0.990743147439599
             },
             "home_metrics": {
-                "xg": 2.0321648227530975,
-                "xga": 0.990743147439599,
-                "ppg": 1.5,
-                "win_rate": 50.0
+                "xg": 7.35,
+                "xga": 0.25,
+                "ppg": 1.65,
+                "win_rate": 46.1
             },
             "away_metrics": {
-                "xg": 0.990743147439599,
-                "xga": 2.0321648227530975,
-                "ppg": 1.5,
-                "win_rate": 50.0
+                "xg": 4.68,
+                "xga": 0.28,
+                "ppg": 0.96,
+                "win_rate": 22.3
             }
         },
         {
@@ -1114,16 +1114,16 @@ const dashboardData = {
                 "away": 1.4313649686468535
             },
             "home_metrics": {
-                "xg": 1.1646569568337566,
-                "xga": 1.4313649686468535,
-                "ppg": 1.5,
-                "win_rate": 50.0
+                "xg": 5.19,
+                "xga": 0.3,
+                "ppg": 1.12,
+                "win_rate": 28.2
             },
             "away_metrics": {
-                "xg": 1.4313649686468535,
-                "xga": 1.1646569568337566,
-                "ppg": 1.5,
-                "win_rate": 50.0
+                "xg": 5.72,
+                "xga": 0.22,
+                "ppg": 1.29,
+                "win_rate": 32.2
             }
         },
         {
@@ -1220,16 +1220,16 @@ const dashboardData = {
                 "away": 4.409953394238823
             },
             "home_metrics": {
-                "xg": 0.2642520109875316,
-                "xga": 4.409953394238823,
-                "ppg": 1.5,
-                "win_rate": 50.0
+                "xg": 1.0,
+                "xga": 1.0,
+                "ppg": 0.0,
+                "win_rate": 0.0
             },
             "away_metrics": {
-                "xg": 4.409953394238823,
-                "xga": 0.2642520109875316,
-                "ppg": 1.5,
-                "win_rate": 50.0
+                "xg": 5.21,
+                "xga": 0.22,
+                "ppg": 1.28,
+                "win_rate": 30.2
             }
         },
         {
@@ -1326,16 +1326,16 @@ const dashboardData = {
                 "away": 1.6477940785248941
             },
             "home_metrics": {
-                "xg": 1.1961195679806218,
-                "xga": 1.6477940785248941,
-                "ppg": 1.5,
-                "win_rate": 50.0
+                "xg": 7.24,
+                "xga": 0.24,
+                "ppg": 1.64,
+                "win_rate": 43.4
             },
             "away_metrics": {
-                "xg": 1.6477940785248941,
-                "xga": 1.1961195679806218,
-                "ppg": 1.5,
-                "win_rate": 50.0
+                "xg": 8.16,
+                "xga": 0.17,
+                "ppg": 2.2,
+                "win_rate": 66.5
             }
         },
         {
@@ -1432,16 +1432,16 @@ const dashboardData = {
                 "away": 5.699204152901667
             },
             "home_metrics": {
-                "xg": 0.3281498464768317,
-                "xga": 5.699204152901667,
-                "ppg": 1.5,
-                "win_rate": 50.0
+                "xg": 1.0,
+                "xga": 1.0,
+                "ppg": 0.0,
+                "win_rate": 0.0
             },
             "away_metrics": {
-                "xg": 5.699204152901667,
-                "xga": 0.3281498464768317,
-                "ppg": 1.5,
-                "win_rate": 50.0
+                "xg": 6.73,
+                "xga": 0.28,
+                "ppg": 1.35,
+                "win_rate": 38.1
             }
         }
     ]

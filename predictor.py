@@ -234,12 +234,55 @@ def generar_markdown():
         "|:--------|:-----:|:-----:|:-----:|:---------------:|:---:|:---:|"
     ]
     
-    # Modificación para guardar resultados para el dashboard
+    # Precalcular las métricas de todos los equipos para poder usarlas en el dashboard
+    team_metrics = {}
+    for eq in equipos_unicos:
+        df_home = df_partidos[df_partidos['home'] == eq]
+        df_away = df_partidos[df_partidos['away'] == eq]
+        weight_sum = df_home['weight'].sum() + df_away['weight'].sum()
+        
+        if weight_sum > 0:
+            gf = (df_home['hg'] * df_home['weight']).sum() + (df_away['ag'] * df_away['weight']).sum()
+            ga = (df_home['ag'] * df_home['weight']).sum() + (df_away['hg'] * df_away['weight']).sum()
+            wins = ((df_home['res'] == 'H') * df_home['weight']).sum() + ((df_away['res'] == 'A') * df_away['weight']).sum()
+            draws = ((df_home['res'] == 'D') * df_home['weight']).sum() + ((df_away['res'] == 'D') * df_away['weight']).sum()
+            losses = ((df_home['res'] == 'A') * df_home['weight']).sum() + ((df_away['res'] == 'H') * df_away['weight']).sum()
+            pts = wins * 3 + draws * 1
+            mp = len(df_home) + len(df_away)
+            
+            gf_per90 = gf / weight_sum
+            ga_per90 = ga / weight_sum
+            ppg = pts / weight_sum
+            win_rate = (wins / weight_sum) * 100
+            draw_rate = (draws / weight_sum) * 100
+            loss_rate = (losses / weight_sum) * 100
+            
+            xg_per90 = np.exp(params_calibrados.get(eq, {'alpha':0})['alpha'] + GAMMA)
+            xga_per90 = np.exp(params_calibrados.get(eq, {'beta':0})['beta'])
+            xg_diff = xg_per90 - xga_per90
+        else:
+            gf_per90 = ga_per90 = ppg = win_rate = draw_rate = loss_rate = xg_diff = 0.0
+            xg_per90 = xga_per90 = 1.0
+            mp = 0
+
+        team_metrics[eq] = {
+            "gf_per90": round(gf_per90, 2), "ga_per90": round(ga_per90, 2), 
+            "xg_per90": round(xg_per90, 2), "xga_per90": round(xga_per90, 2),
+            "ppg": round(ppg, 2), "win_rate": round(win_rate, 1), 
+            "draw_rate": round(draw_rate, 1), "loss_rate": round(loss_rate, 1),
+            "xg_diff": round(xg_diff, 2), "total_matches": mp
+        }
+
     resultados = []
     
     for home, away in MW6_FIXTURES:
-        if home not in equipos_unicos: equipos_unicos.append(home)
-        if away not in equipos_unicos: equipos_unicos.append(away)
+        if home not in equipos_unicos: 
+            equipos_unicos.append(home)
+            team_metrics[home] = {"gf_per90": 0, "ga_per90": 0, "xg_per90": 1.0, "xga_per90": 1.0, "ppg": 0.0, "win_rate": 0.0, "draw_rate": 0.0, "loss_rate": 0.0, "xg_diff": 0.0, "total_matches": 0}
+        if away not in equipos_unicos: 
+            equipos_unicos.append(away)
+            team_metrics[away] = {"gf_per90": 0, "ga_per90": 0, "xg_per90": 1.0, "xga_per90": 1.0, "ppg": 0.0, "win_rate": 0.0, "draw_rate": 0.0, "loss_rate": 0.0, "xg_diff": 0.0, "total_matches": 0}
+            
         res = predecir_partido(home, away)
         p = res["1x2"]
         lineas.append(f"| {home} vs {away} | {p['1']:.1f} | {p['X']:.1f} | {p['2']:.1f} | **{res['score']}** ({res['score_prob']:.1f}%) | {res['lambda']:.2f} | {res['mu']:.2f} |")
@@ -270,8 +313,8 @@ def generar_markdown():
             "poisson_matrix": poisson_matrix,
             "analysis": f"Partido dominado por tasa {res['lambda']:.2f} vs {res['mu']:.2f}.",
             "lambdas": {"home": res["lambda"], "away": res["mu"]},
-            "home_metrics": {"xg": res["lambda"], "xga": res["mu"], "ppg": 1.5, "win_rate": 50.0},
-            "away_metrics": {"xg": res["mu"], "xga": res["lambda"], "ppg": 1.5, "win_rate": 50.0}
+            "home_metrics": {"xg": team_metrics[home]["xg_per90"], "xga": team_metrics[home]["xga_per90"], "ppg": team_metrics[home]["ppg"], "win_rate": team_metrics[home]["win_rate"]},
+            "away_metrics": {"xg": team_metrics[away]["xg_per90"], "xga": team_metrics[away]["xga_per90"], "ppg": team_metrics[away]["ppg"], "win_rate": team_metrics[away]["win_rate"]}
         })
         
     with open("informe_jornada.md", "w", encoding="utf-8") as f:
@@ -290,18 +333,10 @@ def generar_markdown():
             "halflife_days": int(HALFLIFE_DAYS),
             "history_note": "Modelo Dixon-Coles Bivariado ajustado con XGBoost."
         },
-        "team_metrics": {},
+        "team_metrics": team_metrics,
         "matches": resultados
     }
     
-    for eq in equipos_unicos:
-        # Metricas simplificadas para que no truene el dashboard
-        dashboard_data["team_metrics"][eq] = {
-            "gf_per90": 1.5, "ga_per90": 1.5, "xg_per90": 1.5, "xga_per90": 1.5,
-            "ppg": 1.5, "win_rate": 33.3, "draw_rate": 33.3, "loss_rate": 33.4,
-            "xg_diff": 0.0, "total_matches": 38
-        }
-        
     with open("dashboard_data.js", "w", encoding="utf-8") as f:
         f.write(f"const dashboardData = {json.dumps(dashboard_data, indent=4)};\n")
     print("✅ Dashboard web actualizado: dashboard_data.js")
