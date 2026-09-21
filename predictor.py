@@ -236,9 +236,15 @@ def generar_markdown():
         "|:--------|:-----:|:-----:|:-----:|:---------------:|:---:|:---:|"
     ]
     
-    # Precalcular las métricas de todos los equipos para poder usarlas en el dashboard
+    # Extraer solo los 20 equipos activos de la jornada actual
+    equipos_activos = set()
+    for h, a in MW6_FIXTURES:
+        equipos_activos.add(h)
+        equipos_activos.add(a)
+
+    # Precalcular las métricas solo para los 20 equipos activos para el dashboard
     team_metrics = {}
-    for eq in equipos_unicos:
+    for eq in equipos_activos:
         df_home = df_partidos[df_partidos['home'] == eq]
         df_away = df_partidos[df_partidos['away'] == eq]
         weight_sum = df_home['weight'].sum() + df_away['weight'].sum()
@@ -261,10 +267,14 @@ def generar_markdown():
             
             xg_per90 = np.exp(params_calibrados.get(eq, {'alpha':0})['alpha'] + GAMMA)
             xga_per90 = np.exp(params_calibrados.get(eq, {'beta':0})['beta'])
+            
+            # Floor to prevent 0.0 which breaks some UI charts
+            xg_per90 = max(0.01, xg_per90)
+            xga_per90 = max(0.01, xga_per90)
             xg_diff = xg_per90 - xga_per90
         else:
             gf_per90 = ga_per90 = ppg = win_rate = draw_rate = loss_rate = xg_diff = 0.0
-            xg_per90 = xga_per90 = 1.0
+            xg_per90 = xga_per90 = 0.01
             mp = 0
 
         team_metrics[eq] = {
