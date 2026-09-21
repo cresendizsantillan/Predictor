@@ -55,7 +55,9 @@ def load_historical_data():
                             "Newcastle": "Newcastle United",
                             "Nott'm Forest": "Nottingham Forest",
                             "Ipswich": "Ipswich Town",
-                            "Leeds": "Leeds United"
+                            "Leeds": "Leeds United",
+                            "Coventry": "Coventry City",
+                            "Hull": "Hull City"
                         }
                         home = NAME_MAPPING.get(home, home)
                         away = NAME_MAPPING.get(away, away)

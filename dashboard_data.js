@@ -3,7 +3,7 @@ const dashboardData = {
         "title": "Lobo Picks Predictor (MLE + XGBoost)",
         "matchweek": 6,
         "matchweek_dates": "10-12 Octubre 2026",
-        "teams_loaded": 31,
+        "teams_loaded": 29,
         "matches_count": 10,
         "league_avg_goals": 2.8,
         "halflife_days": 180,
@@ -94,7 +94,7 @@ const dashboardData = {
             "xg_diff": 7.09,
             "total_matches": 194
         },
-        "Coventry": {
+        "Coventry City": {
             "gf_per90": 0.0,
             "ga_per90": 2.52,
             "xg_per90": 0.0,
@@ -142,7 +142,7 @@ const dashboardData = {
             "xg_diff": 4.83,
             "total_matches": 156
         },
-        "Hull": {
+        "Hull City": {
             "gf_per90": 1.25,
             "ga_per90": 0.52,
             "xg_per90": 4.65,
@@ -357,30 +357,6 @@ const dashboardData = {
             "loss_rate": 56.0,
             "xg_diff": 3.44,
             "total_matches": 190
-        },
-        "Hull City": {
-            "gf_per90": 0,
-            "ga_per90": 0,
-            "xg_per90": 1.0,
-            "xga_per90": 1.0,
-            "ppg": 0.0,
-            "win_rate": 0.0,
-            "draw_rate": 0.0,
-            "loss_rate": 0.0,
-            "xg_diff": 0.0,
-            "total_matches": 0
-        },
-        "Coventry City": {
-            "gf_per90": 0,
-            "ga_per90": 0,
-            "xg_per90": 1.0,
-            "xga_per90": 1.0,
-            "ppg": 0.0,
-            "win_rate": 0.0,
-            "draw_rate": 0.0,
-            "loss_rate": 0.0,
-            "xg_diff": 0.0,
-            "total_matches": 0
         }
     },
     "matches": [
@@ -1130,83 +1106,83 @@ const dashboardData = {
             "home": "Hull City",
             "away": "Everton",
             "probabilities": {
-                "home_win": 4.350053891539574,
-                "draw": 11.92639172077179,
-                "away_win": 83.72355103492737
+                "home_win": 44.731685519218445,
+                "draw": 39.13540840148926,
+                "away_win": 16.132906079292297
             },
             "poisson_1x2": {
-                "home_win": 4.350053891539574,
-                "draw": 11.92639172077179,
-                "away_win": 83.72355103492737
+                "home_win": 44.731685519218445,
+                "draw": 39.13540840148926,
+                "away_win": 16.132906079292297
             },
             "exact_score": {
-                "score": "0-4",
-                "probability": 20.55958481300776
+                "score": "1-0",
+                "probability": 22.12148854306198
             },
             "top3_scores": [
                 {
-                    "score": "0-4",
-                    "probability": 20.55958481300776
+                    "score": "1-0",
+                    "probability": 22.12148854306198
                 }
             ],
             "poisson_matrix": [
                 [
-                    1.13,
-                    4.52,
-                    10.81,
-                    15.89,
-                    17.52,
-                    15.45,
-                    11.36
+                    21.83,
+                    10.53,
+                    2.61,
+                    0.43,
+                    0.05,
+                    0.01,
+                    0.0
                 ],
                 [
-                    0.29,
-                    1.32,
-                    2.86,
-                    4.2,
-                    4.63,
-                    4.08,
-                    3.0
+                    22.11,
+                    11.26,
+                    2.71,
+                    0.44,
+                    0.05,
+                    0.01,
+                    0.0
+                ],
+                [
+                    11.73,
+                    5.76,
+                    1.41,
+                    0.23,
+                    0.03,
+                    0.0,
+                    0.0
+                ],
+                [
+                    4.07,
+                    2.0,
+                    0.49,
+                    0.08,
+                    0.01,
+                    0.0,
+                    0.0
+                ],
+                [
+                    1.06,
+                    0.52,
+                    0.13,
+                    0.02,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.22,
+                    0.11,
+                    0.03,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
                 ],
                 [
                     0.04,
-                    0.17,
-                    0.38,
-                    0.55,
-                    0.61,
-                    0.54,
-                    0.4
-                ],
-                [
-                    0.0,
                     0.02,
-                    0.03,
-                    0.05,
-                    0.05,
-                    0.05,
-                    0.03
-                ],
-                [
-                    0.0,
-                    0.0,
-                    0.0,
-                    0.0,
-                    0.0,
-                    0.0,
-                    0.0
-                ],
-                [
-                    0.0,
-                    0.0,
-                    0.0,
-                    0.0,
-                    0.0,
-                    0.0,
-                    0.0
-                ],
-                [
-                    0.0,
-                    0.0,
                     0.0,
                     0.0,
                     0.0,
@@ -1214,16 +1190,16 @@ const dashboardData = {
                     0.0
                 ]
             ],
-            "analysis": "Partido dominado por tasa 0.26 vs 4.41.",
+            "analysis": "Partido dominado por tasa 1.04 vs 0.49.",
             "lambdas": {
-                "home": 0.2642520109875316,
-                "away": 4.409953394238823
+                "home": 1.0413692259737035,
+                "away": 0.49093530417084125
             },
             "home_metrics": {
-                "xg": 1.0,
-                "xga": 1.0,
-                "ppg": 0.0,
-                "win_rate": 0.0
+                "xg": 4.65,
+                "xga": 0.11,
+                "ppg": 1.97,
+                "win_rate": 48.7
             },
             "away_metrics": {
                 "xg": 5.21,
@@ -1352,60 +1328,60 @@ const dashboardData = {
                 "away_win": 83.72355103492737
             },
             "exact_score": {
-                "score": "0-5",
-                "probability": 24.469537785768075
+                "score": "0-2",
+                "probability": 27.752031130868577
             },
             "top3_scores": [
                 {
-                    "score": "0-5",
-                    "probability": 24.469537785768075
+                    "score": "0-2",
+                    "probability": 27.752031130868577
                 }
             ],
             "poisson_matrix": [
                 [
-                    0.38,
-                    1.89,
-                    6.0,
-                    11.39,
-                    16.23,
-                    18.5,
-                    17.57
-                ],
-                [
-                    0.12,
-                    0.7,
-                    1.97,
-                    3.74,
-                    5.33,
-                    6.07,
-                    5.77
-                ],
-                [
-                    0.02,
-                    0.11,
-                    0.32,
-                    0.61,
-                    0.87,
-                    1.0,
-                    0.95
-                ],
-                [
-                    0.0,
-                    0.01,
-                    0.04,
-                    0.07,
-                    0.1,
-                    0.11,
-                    0.1
+                    11.1,
+                    23.62,
+                    27.25,
+                    20.12,
+                    11.15,
+                    4.94,
+                    1.82
                 ],
                 [
                     0.0,
                     0.0,
                     0.0,
-                    0.01,
-                    0.01,
-                    0.01,
-                    0.01
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.0
                 ],
                 [
                     0.0,
@@ -1426,14 +1402,14 @@ const dashboardData = {
                     0.0
                 ]
             ],
-            "analysis": "Partido dominado por tasa 0.33 vs 5.70.",
+            "analysis": "Partido dominado por tasa 0.00 vs 2.22.",
             "lambdas": {
-                "home": 0.3281498464768317,
-                "away": 5.699204152901667
+                "home": 1.126037238399197e-06,
+                "away": 2.215910171750705
             },
             "home_metrics": {
-                "xg": 1.0,
-                "xga": 1.0,
+                "xg": 0.0,
+                "xga": 0.39,
                 "ppg": 0.0,
                 "win_rate": 0.0
             },

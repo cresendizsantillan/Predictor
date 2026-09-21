@@ -14,6 +14,6 @@
 | Sunderland vs Brighton | 27.3 | 35.7 | 37.0 | **1-1** (12.9%) | 1.09 | 1.42 |
 | Manchester United vs Tottenham Hotspur | 71.1 | 21.3 | 7.5 | **2-0** (10.2%) | 2.03 | 0.99 |
 | Crystal Palace vs Nottingham Forest | 28.2 | 39.7 | 32.1 | **1-1** (12.7%) | 1.16 | 1.43 |
-| Hull City vs Everton | 4.4 | 11.9 | 83.7 | **0-4** (20.6%) | 0.26 | 4.41 |
+| Hull City vs Everton | 44.7 | 39.1 | 16.1 | **1-0** (22.1%) | 1.04 | 0.49 |
 | Liverpool vs Manchester City | 38.4 | 21.1 | 40.6 | **1-1** (11.8%) | 1.20 | 1.65 |
-| Coventry City vs Newcastle United | 4.4 | 11.9 | 83.7 | **0-5** (24.5%) | 0.33 | 5.70 |
+| Coventry City vs Newcastle United | 4.4 | 11.9 | 83.7 | **0-2** (27.8%) | 0.00 | 2.22 |
