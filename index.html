@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lobo Picks Predictor — Dashboard Analítico</title>
+    <meta name="description" content="Dashboard de análisis predictivo de la Premier League con modelos EWMA, XGBoost y Poisson.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ═══════════ HEADER ═══════════ -->
+    <header id="main-header">
+        <div class="header-inner">
+            <div class="logo-group">
+                <div class="logo-icon">🐺</div>
+                <div>
+                    <h1>Lobo Picks Predictor</h1>
+                    <p class="subtitle" id="header-subtitle">Premier League · Matchweek 6</p>
+                </div>
+            </div>
+            <div class="header-badges">
+                <span class="badge badge-accent" id="badge-method">EWMA · Poisson · XGBoost</span>
+                <span class="badge badge-muted" id="badge-halflife">Half-life: 180 días</span>
+                <span class="badge badge-highlight" id="badge-matches">10 partidos</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ═══════════ NAV TABS ═══════════ -->
+    <nav id="main-nav">
+        <div class="nav-inner">
+            <button class="nav-tab active" data-section="overview">📊 Resumen</button>
+            <button class="nav-tab" data-section="matches">⚽ Partidos</button>
+            <button class="nav-tab" data-section="heatmaps">🔥 Heatmaps</button>
+            <button class="nav-tab" data-section="league">🏆 Liga</button>
+        </div>
+    </nav>
+
+    <main id="app-main">
+
+        <!-- ═══════════ SECTION: OVERVIEW ═══════════ -->
+        <section id="section-overview" class="section active">
+
+            <!-- KPI Cards -->
+            <div class="kpi-row" id="kpi-row"></div>
+
+            <!-- Charts Row -->
+            <div class="grid-2col">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Distribución 1X2 por Partido</h3>
+                        <span class="card-badge">XGBoost</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="chart-1x2-bars"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Distribución Global de Resultados</h3>
+                        <span class="card-badge">Agregado</span>
+                    </div>
+                    <div class="chart-container chart-container-sm">
+                        <canvas id="chart-global-donut"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lambdas Chart -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>Goles Esperados (λ) — Modelo Poisson</h3>
+                    <span class="card-badge">λ Home vs Away</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="chart-lambdas"></canvas>
+                </div>
+            </div>
+
+            <!-- Summary Table -->
+            <div class="card">
+                <div class="card-header">
+                    <h3>📋 Resumen Ejecutivo — Jornada 6</h3>
+                    <span class="card-badge">Todos los partidos</span>
+                </div>
+                <div class="table-responsive">
+                    <table id="summary-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Partido</th>
+                                <th>1 (%)</th>
+                                <th>X (%)</th>
+                                <th>2 (%)</th>
+                                <th>Marcador</th>
+                                <th>λ Local</th>
+                                <th>λ Visita</th>
+                                <th>Pronóstico</th>
+                            </tr>
+                        </thead>
+                        <tbody id="summary-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════ SECTION: MATCHES ═══════════ -->
+        <section id="section-matches" class="section">
+            <div id="match-cards-container"></div>
+        </section>
+
+        <!-- ═══════════ SECTION: HEATMAPS ═══════════ -->
+        <section id="section-heatmaps" class="section">
+            <div class="card">
+                <div class="card-header">
+                    <h3>🔥 Matrices de Poisson — Selecciona un Partido</h3>
+                </div>
+                <div class="heatmap-selector">
+                    <select id="heatmap-match-select"></select>
+                </div>
+            </div>
+            <div class="grid-2col">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 id="heatmap-title">Matriz de Probabilidad</h3>
+                        <span class="card-badge">Poisson Bivariado</span>
+                    </div>
+                    <div class="heatmap-wrapper">
+                        <div id="poisson-heatmap"></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>Top 3 Marcadores</h3>
+                        <span class="card-badge">Probabilidades</span>
+                    </div>
+                    <div class="chart-container chart-container-sm">
+                        <canvas id="chart-top3-scores"></canvas>
+                    </div>
+                    <div id="heatmap-analysis" class="analysis-box"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════ SECTION: LEAGUE ═══════════ -->
+        <section id="section-league" class="section">
+            <div class="grid-2col">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>🏆 Power Rankings (EWMA PPG)</h3>
+                        <span class="card-badge">Ponderado</span>
+                    </div>
+                    <div class="chart-container chart-container-tall">
+                        <canvas id="chart-power-ranking"></canvas>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>⚔️ xG Ofensivo vs Defensivo</h3>
+                        <span class="card-badge">Scatter</span>
+                    </div>
+                    <div class="chart-container chart-container-tall">
+                        <canvas id="chart-xg-scatter"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>📊 Tabla de Métricas EWMA — Todos los Equipos</h3>
+                    <span class="card-badge">20 equipos</span>
+                </div>
+                <div class="table-responsive">
+                    <table id="league-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Equipo</th>
+                                <th>PPG</th>
+                                <th>xG/90</th>
+                                <th>xGA/90</th>
+                                <th>xG Diff</th>
+                                <th>Win %</th>
+                                <th>Draw %</th>
+                                <th>Loss %</th>
+                                <th>Partidos</th>
+                            </tr>
+                        </thead>
+                        <tbody id="league-tbody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>🍩 Win / Draw / Loss por Equipo</h3>
+                    <span class="card-badge">Stacked Bar</span>
+                </div>
+                <div class="chart-container chart-container-tall">
+                    <canvas id="chart-wdl-stacked"></canvas>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer id="main-footer">
+        <p>🐺 Lobo Picks Predictor · Algoritmo EWMA Histórico · Datos: football-data.co.uk · Modelos: XGBoost + Poisson Bivariado</p>
+    </footer>
+
+    <script src="dashboard_data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
