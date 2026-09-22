@@ -64,6 +64,13 @@ def load_historical_data():
                         
                         hg, ag = int(row["FTHG"]), int(row["FTAG"])
                         
+                        hst = int(row.get("HST") or hg) # Fallback to goals if HST is missing
+                        ast = int(row.get("AST") or ag)
+                        hc = int(row.get("HC") or 5)
+                        ac = int(row.get("AC") or 5)
+                        hr = int(row.get("HR") or 0)
+                        ar = int(row.get("AR") or 0)
+                        
                         days_ago = max(0, (CURRENT_DATE - match_date).days)
                         weight = np.exp(-LAMBDA_DECAY * days_ago)
                         
@@ -74,6 +81,9 @@ def load_historical_data():
                         registros.append({
                             'home': home, 'away': away, 
                             'hg': hg, 'ag': ag, 
+                            'hst': hst, 'ast': ast,
+                            'hc': hc, 'ac': ac,
+                            'hr': hr, 'ar': ar,
                             'res': res, 'weight': weight
                         })
                     except Exception:
@@ -93,9 +103,19 @@ def load_historical_data():
             h, a = np.random.choice(equipos, 2, replace=False)
             hg, ag = np.random.poisson(1.5), np.random.poisson(1.1)
             res = 'H' if hg > ag else ('D' if hg == ag else 'A')
-            registros.append({'home': h, 'away': a, 'hg': hg, 'ag': ag, 'res': res, 'weight': np.random.uniform(0.5, 1.0)})
+            registros.append({
+                'home': h, 'away': a, 'hg': hg, 'ag': ag, 
+                'hst': hg + np.random.randint(0, 4), 'ast': ag + np.random.randint(0, 4),
+                'hc': np.random.randint(2, 8), 'ac': np.random.randint(2, 8),
+                'hr': np.random.choice([0, 1], p=[0.9, 0.1]), 'ar': np.random.choice([0, 1], p=[0.9, 0.1]),
+                'res': res, 'weight': np.random.uniform(0.5, 1.0)
+            })
             
-    return pd.DataFrame(registros)
+    df = pd.DataFrame(registros)
+    df['shots_diff'] = df['hst'] - df['ast']
+    df['corners_diff'] = df['hc'] - df['ac']
+    df['red_card_handicap'] = df['ar'] - df['hr']
+    return df
 
 df_partidos = load_historical_data()
 equipos_unicos = sorted(list(set(df_partidos['home']).union(set(df_partidos['away']))))
@@ -158,7 +178,7 @@ df_partidos['mu_a'] = np.exp(df_partidos['away'].map(lambda x: params_calibrados
 # =============================================================================
 
 print("🧠 Entrenando Ensamble XGBoost (Calibración Logística)...")
-X = df_partidos[['lambda_h', 'mu_a']]
+X = df_partidos[['lambda_h', 'mu_a', 'shots_diff', 'corners_diff', 'red_card_handicap']]
 y_h = (df_partidos['res'] == 'H').astype(int)
 y_d = (df_partidos['res'] == 'D').astype(int)
 y_a = (df_partidos['res'] == 'A').astype(int)
@@ -181,6 +201,19 @@ MW6_FIXTURES = [
     ("Liverpool", "Manchester City"), ("Coventry City", "Newcastle United")
 ]
 
+def get_team_expected_stats(team):
+    df_h = df_partidos[df_partidos['home'] == team]
+    df_a = df_partidos[df_partidos['away'] == team]
+    w_sum = df_h['weight'].sum() + df_a['weight'].sum()
+    if w_sum == 0:
+        return 0.0, 0.0, 0.0
+        
+    shots = (df_h['hst'] * df_h['weight']).sum() + (df_a['ast'] * df_a['weight']).sum()
+    corners = (df_h['hc'] * df_h['weight']).sum() + (df_a['ac'] * df_a['weight']).sum()
+    reds = (df_h['hr'] * df_h['weight']).sum() + (df_a['ar'] * df_a['weight']).sum()
+    
+    return shots/w_sum, corners/w_sum, reds/w_sum
+
 def predecir_partido(home, away):
     # 1. Extraer parámetros estructurales
     a_h, b_h = params_calibrados.get(home, {'alpha': 0.0, 'beta': 0.0}).values()
@@ -189,8 +222,21 @@ def predecir_partido(home, away):
     lam = np.exp(a_h + b_a + GAMMA)
     mu = np.exp(a_a + b_h)
     
-    # 2. Inferencia XGBoost (Probabilidades de mercado)
-    X_nuevo = pd.DataFrame({'lambda_h': [lam], 'mu_a': [mu]})
+    # 2. Inferencia XGBoost con features avanzadas (Probabilidades de mercado)
+    h_shots, h_corners, h_reds = get_team_expected_stats(home)
+    a_shots, a_corners, a_reds = get_team_expected_stats(away)
+    
+    exp_shots_diff = h_shots - a_shots
+    exp_corners_diff = h_corners - a_corners
+    exp_red_card_handicap = a_reds - h_reds
+
+    X_nuevo = pd.DataFrame({
+        'lambda_h': [lam], 
+        'mu_a': [mu],
+        'shots_diff': [exp_shots_diff],
+        'corners_diff': [exp_corners_diff],
+        'red_card_handicap': [exp_red_card_handicap]
+    })
     p_h = model_h.predict_proba(X_nuevo)[0][1]
     p_d = model_d.predict_proba(X_nuevo)[0][1]
     p_a = model_a.predict_proba(X_nuevo)[0][1]

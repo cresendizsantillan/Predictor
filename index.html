@@ -16,7 +16,6 @@
     <header id="main-header">
         <div class="header-inner">
             <div class="logo-group">
-                <div class="logo-icon">🐺</div>
                 <div>
                     <h1>Lobo Picks Predictor</h1>
                     <p class="subtitle" id="header-subtitle">Premier League · Matchweek 6</p>
@@ -33,10 +32,11 @@
     <!-- ═══════════ NAV TABS ═══════════ -->
     <nav id="main-nav">
         <div class="nav-inner">
-            <button class="nav-tab active" data-section="overview">📊 Resumen</button>
-            <button class="nav-tab" data-section="matches">⚽ Partidos</button>
-            <button class="nav-tab" data-section="heatmaps">🔥 Heatmaps</button>
-            <button class="nav-tab" data-section="league">🏆 Liga</button>
+            <button class="nav-tab active" data-section="overview">Resumen</button>
+            <button class="nav-tab" data-section="matches">Partidos</button>
+            <button class="nav-tab" data-section="heatmaps">Heatmaps</button>
+            <button class="nav-tab" data-section="league">Liga</button>
+            <button class="nav-tab" data-section="methodology">Metodología</button>
         </div>
     </nav>
 
@@ -44,6 +44,7 @@
 
         <!-- ═══════════ SECTION: OVERVIEW ═══════════ -->
         <section id="section-overview" class="section active">
+            <p class="section-desc">Vista gerencial de la jornada. Combina la intensidad estructural (Poisson) con el aprendizaje automático (XGBoost) para encontrar las mejores cuotas.</p>
 
             <!-- KPI Cards -->
             <div class="kpi-row" id="kpi-row"></div>
@@ -52,7 +53,7 @@
             <div class="grid-2col">
                 <div class="card">
                     <div class="card-header">
-                        <h3>Distribución 1X2 por Partido</h3>
+                        <h3>Distribución 1X2 por Partido <span class="info-tooltip">ⓘ<span class="tooltip-text"><strong>Probabilidades XGBoost</strong>Modelo logístico calibrado que evalúa el histórico de resultados, tiros, córners y tarjetas para predecir si el Local gana (1), hay Empate (X), o la Visita gana (2).</span></span></h3>
                         <span class="card-badge">XGBoost</span>
                     </div>
                     <div class="chart-container">
@@ -73,7 +74,7 @@
             <!-- Lambdas Chart -->
             <div class="card">
                 <div class="card-header">
-                    <h3>Goles Esperados (λ) — Modelo Poisson</h3>
+                    <h3>Goles Esperados (λ) — Modelo Poisson <span class="info-tooltip">ⓘ<span class="tooltip-text"><strong>Intensidad Goleadora (λ)</strong>Calculado vía Máxima Verosimilitud (Dixon-Coles). Representa el promedio estadístico de goles que un equipo debería anotar dadas sus fuerzas ofensivas y las debilidades defensivas del rival.</span></span></h3>
                     <span class="card-badge">λ Home vs Away</span>
                 </div>
                 <div class="chart-container">
@@ -84,7 +85,7 @@
             <!-- Summary Table -->
             <div class="card">
                 <div class="card-header">
-                    <h3>📋 Resumen Ejecutivo — Jornada 6</h3>
+                    <h3>Resumen Ejecutivo — Jornada 6</h3>
                     <span class="card-badge">Todos los partidos</span>
                 </div>
                 <div class="table-responsive">
@@ -110,14 +111,16 @@
 
         <!-- ═══════════ SECTION: MATCHES ═══════════ -->
         <section id="section-matches" class="section">
+            <p class="section-desc">Análisis profundo partido a partido, mostrando las diferencias esperadas de tiros a puerta, el análisis táctico de XGBoost y los marcadores exactos de Poisson.</p>
             <div id="match-cards-container"></div>
         </section>
 
         <!-- ═══════════ SECTION: HEATMAPS ═══════════ -->
         <section id="section-heatmaps" class="section">
+            <p class="section-desc">Simulación bivariada. El cruce entre la fila (Goles Local) y la columna (Goles Visita) nos da la probabilidad de cualquier marcador exacto.</p>
             <div class="card">
                 <div class="card-header">
-                    <h3>🔥 Matrices de Poisson — Selecciona un Partido</h3>
+                    <h3>Matrices de Poisson — Selecciona un Partido <span class="info-tooltip">ⓘ<span class="tooltip-text"><strong>Poisson Bivariado</strong>Basado en las intensidades λ (Local) y μ (Visita). Cada celda representa la probabilidad de que el partido termine exactamente con ese cruce de goles.</span></span></h3>
                 </div>
                 <div class="heatmap-selector">
                     <select id="heatmap-match-select"></select>
@@ -148,10 +151,11 @@
 
         <!-- ═══════════ SECTION: LEAGUE ═══════════ -->
         <section id="section-league" class="section">
+            <p class="section-desc">Métricas ponderadas a lo largo de la temporada. Se utiliza un decaimiento temporal (Half-life de 180 días) para dar más peso al estado de forma reciente.</p>
             <div class="grid-2col">
                 <div class="card">
                     <div class="card-header">
-                        <h3>🏆 Power Rankings (EWMA PPG)</h3>
+                        <h3>Power Rankings (EWMA PPG) <span class="info-tooltip">ⓘ<span class="tooltip-text"><strong>Puntos por Partido (PPG)</strong>Calculados con una media móvil exponencial (EWMA). Refleja los puntos promedio que consigue el equipo, dándole más importancia matemática a las jornadas más recientes.</span></span></h3>
                         <span class="card-badge">Ponderado</span>
                     </div>
                     <div class="chart-container chart-container-tall">
@@ -160,7 +164,7 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <h3>⚔️ xG Ofensivo vs Defensivo</h3>
+                        <h3>xG Ofensivo vs Defensivo <span class="info-tooltip">ⓘ<span class="tooltip-text"><strong>xG y xGA</strong>Goles Esperados (a favor y en contra). Estar en la esquina superior derecha es ideal (anotan mucho y reciben poco).</span></span></h3>
                         <span class="card-badge">Scatter</span>
                     </div>
                     <div class="chart-container chart-container-tall">
@@ -171,7 +175,7 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3>📊 Tabla de Métricas EWMA — Todos los Equipos</h3>
+                    <h3>Tabla de Métricas EWMA — Todos los Equipos</h3>
                     <span class="card-badge">20 equipos</span>
                 </div>
                 <div class="table-responsive">
@@ -180,10 +184,10 @@
                             <tr>
                                 <th>#</th>
                                 <th>Equipo</th>
-                                <th>PPG</th>
-                                <th>xG/90</th>
-                                <th>xGA/90</th>
-                                <th>xG Diff</th>
+                                <th>PPG <span class="info-tooltip">ⓘ<span class="tooltip-text"><strong>Puntos Por Partido</strong> (Ponderado por tiempo)</span></span></th>
+                                <th>xG/90 <span class="info-tooltip">ⓘ<span class="tooltip-text"><strong>Goles Anotados Esperados</strong> cada 90 minutos</span></span></th>
+                                <th>xGA/90 <span class="info-tooltip">ⓘ<span class="tooltip-text"><strong>Goles Recibidos Esperados</strong> cada 90 minutos</span></span></th>
+                                <th>xG Diff <span class="info-tooltip">ⓘ<span class="tooltip-text"><strong>Diferencia de Goles Esperada</strong> (xG - xGA)</span></span></th>
                                 <th>Win %</th>
                                 <th>Draw %</th>
                                 <th>Loss %</th>
@@ -197,11 +201,49 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3>🍩 Win / Draw / Loss por Equipo</h3>
+                    <h3>Win / Draw / Loss por Equipo</h3>
                     <span class="card-badge">Stacked Bar</span>
                 </div>
                 <div class="chart-container chart-container-tall">
                     <canvas id="chart-wdl-stacked"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════ SECTION: METHODOLOGY ═══════════ -->
+        <section id="section-methodology" class="section">
+            <p class="section-desc">Una explicación a fondo de la arquitectura, los datos inyectados y cómo el sistema toma decisiones tácticas.</p>
+            
+            <div class="methodology-grid">
+                <div class="methodology-card">
+                    <h3>Arquitectura Híbrida</h3>
+                    <p>El "Lobo Picks Predictor" utiliza un enfoque pionero de dos capas para evitar las falacias comunes de los modelos puramente probabilísticos.</p>
+                    <ul>
+                        <li><strong>Capa 1 (Estructural):</strong> Modelo MLE de Dixon-Coles que encuentra las fuerzas de ataque y defensa subyacentes de cada equipo basado exclusivamente en goles.</li>
+                        <li><strong>Capa 2 (Táctica):</strong> Meta-modelo XGBoost que toma los outputs de la Capa 1 y los enriquece con variables de flujo de juego (tiros a puerta, córners, expulsiones).</li>
+                    </ul>
+                </div>
+
+                <div class="methodology-card">
+                    <h3>Kernel de Decaimiento Temporal</h3>
+                    <p>No todos los partidos valen lo mismo. Un partido jugado ayer tiene mucha más importancia para predecir el futuro que uno jugado hace 3 años.</p>
+                    <p>Usamos un <strong>Exponentially Weighted Moving Average (EWMA)</strong> con un <em>Half-life</em> de 180 días. Esto significa que un partido ocurrido hace 6 meses pesa exactamente la mitad matemática que un partido ocurrido hoy en la memoria del modelo.</p>
+                </div>
+
+                <div class="methodology-card">
+                    <h3>Variables Avanzadas (Novedad)</h3>
+                    <p>En nuestra última actualización de arquitectura, el modelo XGBoost dejó de ser "ciego" a lo que pasa dentro del campo. Ahora inyectamos:</p>
+                    <ul>
+                        <li><strong>Shots Diff:</strong> Diferencia de Tiros a Puerta. Un equipo puede perder 1-0, pero si tiró 15 veces a puerta y el rival 1, el modelo sabrá que fue "mala suerte" y no debilidad táctica.</li>
+                        <li><strong>Corners Diff:</strong> Mide la presión en el área rival y posesión territorial.</li>
+                        <li><strong>Red Card Handicap:</strong> Mide si los resultados históricos de un equipo se vieron alterados positiva o negativamente por expulsiones, "limpiando" el ruido.</li>
+                    </ul>
+                </div>
+
+                <div class="methodology-card">
+                    <h3>Interpretando los Heatmaps</h3>
+                    <p>La vista de "Heatmaps" es una Distribución Bivariada de Poisson. Asume que los goles locales y visitantes son eventos casi independientes en el tiempo.</p>
+                    <p>Usando las intensidades calculadas ($\lambda$ y $\mu$), la matriz arroja qué tan probable es que ocurra exactamente un cruce específico. La celda con el color más intenso o rojo es estadísticamente el marcador más probable. Si la probabilidad es baja (ej. menor a 5%), el mercado puede estar sobrevalorando cuotas de over/under.</p>
                 </div>
             </div>
         </section>

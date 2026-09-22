@@ -77,16 +77,16 @@ function renderKPIs() {
 
     const container = document.getElementById('kpi-row');
     const kpis = [
-        { label: 'Victorias Locales', value: homeWins, sub: `de ${matches.length} partidos`, cls: 'kpi-accent' },
-        { label: 'Empates', value: draws, sub: `predichos por XGBoost`, cls: 'kpi-amber' },
-        { label: 'Victorias Visitante', value: awayWins, sub: `de ${matches.length} partidos`, cls: 'kpi-cyan' },
-        { label: 'λ Promedio (H / A)', value: `${avgLambdaH}`, sub: `Home ${avgLambdaH} · Away ${avgLambdaA}`, cls: 'kpi-green' },
-        { label: 'Mayor Confianza', value: `${maxConf.val.toFixed(0)}%`, sub: maxConf.label, cls: 'kpi-accent' },
+        { label: 'Victorias Locales', value: homeWins, sub: `de ${matches.length} partidos`, cls: 'kpi-accent', desc: '<strong>Predicción XGBoost</strong>Partidos donde el modelo asigna la mayor probabilidad a la victoria del equipo local.' },
+        { label: 'Empates', value: draws, sub: `predichos por XGBoost`, cls: 'kpi-amber', desc: '<strong>Predicción XGBoost</strong>Partidos donde el empate es el escenario estadísticamente más probable.' },
+        { label: 'Victorias Visitante', value: awayWins, sub: `de ${matches.length} partidos`, cls: 'kpi-cyan', desc: '<strong>Predicción XGBoost</strong>Partidos donde la victoria visitante domina la distribución de probabilidad.' },
+        { label: 'λ Promedio (H / A)', value: `${avgLambdaH}`, sub: `Home ${avgLambdaH} · Away ${avgLambdaA}`, cls: 'kpi-green', desc: '<strong>Intensidad Global</strong>El promedio de goles esperados generados por Dixon-Coles en toda la jornada. Si H > A, la localía pesa mucho.' },
+        { label: 'Mayor Confianza', value: `${maxConf.val.toFixed(0)}%`, sub: maxConf.label, cls: 'kpi-accent', desc: '<strong>Pick más Seguro</strong>El partido con el mayor margen de probabilidad para un solo resultado.' },
     ];
 
     container.innerHTML = kpis.map(k => `
         <div class="kpi-card ${k.cls}">
-            <div class="kpi-label">${k.label}</div>
+            <div class="kpi-label">${k.label} <span class="info-tooltip">ⓘ<span class="tooltip-text">${k.desc}</span></span></div>
             <div class="kpi-value">${k.value}</div>
             <div class="kpi-sub">${k.sub}</div>
         </div>
@@ -215,7 +215,6 @@ function renderSummaryTable() {
     tbody.innerHTML = matches.map((m, i) => {
         const p = m.probabilities;
         const best = getBest(p);
-        const emoji = { '1': '🏠', 'X': '🤝', '2': '🚌' }[best.key];
         const maxProb = best.val;
 
         return `<tr>
@@ -227,7 +226,7 @@ function renderSummaryTable() {
             <td class="cell-highlight">${m.exact_score.score} (${m.exact_score.probability}%)</td>
             <td>${m.lambdas.home.toFixed(2)}</td>
             <td>${m.lambdas.away.toFixed(2)}</td>
-            <td>${emoji} <strong>${best.key}</strong></td>
+            <td><strong>${best.key}</strong></td>
         </tr>`;
     }).join('');
 }
@@ -256,10 +255,10 @@ function renderMatchCards() {
 
             <div class="match-body">
                 <div class="match-probs-section">
-                    <h4>Probabilidades 1X2 (XGBoost)</h4>
-                    ${probRow('🏠 Local (1)', p.home_win, 'home')}
-                    ${probRow('🤝 Empate (X)', p.draw, 'draw')}
-                    ${probRow('🚌 Visita (2)', p.away_win, 'away')}
+                    <h4>Probabilidades 1X2 <span class="info-tooltip" style="font-size:0.8rem; margin-left:0;">ⓘ<span class="tooltip-text" style="font-weight:400; text-transform:none; font-family:var(--font-main);"><strong>Modelo XGBoost</strong>Calibración basada en fuerzas estructurales (λ) y métricas de campo (tiros, córners, expulsiones).</span></span></h4>
+                    ${probRow('Local (1)', p.home_win, 'home')}
+                    ${probRow('Empate (X)', p.draw, 'draw')}
+                    ${probRow('Visita (2)', p.away_win, 'away')}
 
                     <div class="lambda-pills">
                         <span class="lambda-pill">λ ${abbrev(m.home)} = ${m.lambdas.home}</span>
@@ -268,19 +267,19 @@ function renderMatchCards() {
                 </div>
 
                 <div class="match-score-section">
-                    <h4>Marcador Exacto (Poisson)</h4>
+                    <h4>Marcador Exacto <span class="info-tooltip" style="font-size:0.8rem; margin-left:0;">ⓘ<span class="tooltip-text" style="font-weight:400; text-transform:none; font-family:var(--font-main);"><strong>Modelo de Poisson</strong>El cruce bivariado más probable dadas las intensidades ofensivas y defensivas de ambos equipos.</span></span></h4>
                     <div class="score-chip">
-                        <span class="score-chip-value">⚽ ${m.exact_score.score}</span>
+                        <span class="score-chip-value">${m.exact_score.score}</span>
                         <span class="score-chip-prob">${m.exact_score.probability}%</span>
                     </div>
 
                     <ul class="top3-list">
-                        ${m.top3_scores.map((s, j) => `<li><span>${['🥇','🥈','🥉'][j]} ${s.score}</span><span>${s.probability}%</span></li>`).join('')}
+                        ${m.top3_scores.map((s, j) => `<li><span>${j + 1}. ${s.score}</span><span>${s.probability}%</span></li>`).join('')}
                     </ul>
                 </div>
 
                 <div class="match-analysis">
-                    📊 ${formatAnalysis(m.analysis)}
+                    ${formatAnalysis(m.analysis)}
                 </div>
             </div>
         </div>`;
@@ -382,7 +381,7 @@ function renderHeatmap(idx) {
     });
 
     // Analysis box
-    document.getElementById('heatmap-analysis').innerHTML = `<strong>📊 Análisis:</strong> ${formatAnalysis(m.analysis)}`;
+    document.getElementById('heatmap-analysis').innerHTML = `<strong>Análisis:</strong> ${formatAnalysis(m.analysis)}`;
 }
 
 function heatColor(intensity) {
